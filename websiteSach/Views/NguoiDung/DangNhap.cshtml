@@ -1,0 +1,205 @@
+﻿@model websiteSach.Models.KhachHang
+
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .body {
+        
+        font-family: 'Roboto', sans-serif;
+        color: #ECF0F5;
+        
+    }
+    .login-box {
+        box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+        background-image: url('../../Content/images/1.jpg');
+    }
+
+    .login-key {
+        height: 100px;
+        font-size: 80px;
+        line-height: 100px;
+        background: -webkit-linear-gradient(#27EF9F, #0DB8DE);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .col-lg-6 col-md-8 login-box {
+        border-color: #2e5c66;
+    }
+
+    .login-title {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 30px;
+        letter-spacing: 2px;
+        margin-top: 15px;
+        color: #2e5c66;
+        font-weight: bold;
+    }
+    .btn-default {
+        background-color: #fff;
+        border-color: #2e5c66;
+        color: #2e5c66;
+        font-weight: bold;
+    }
+    .control-label {
+        color: #2e5c66;
+    }
+
+    .login-form {
+        margin-top: 25px;
+        text-align: left;
+       border-color: #ECF0F5;
+    }
+
+    .input[type=text] {
+        border: none;
+        border-bottom: 2px solid #0DB8DE;
+        border-top: 0px;
+        border-radius: 0px;
+        font-weight: bold;
+        outline: 0;
+        margin-bottom: 20px;
+        padding-left: 0px;
+        color: #2e5c66
+    }
+
+
+    .input[type=password] {
+        background-color: #d3e6f0;
+        border: none;
+        border-bottom: 2px solid #0DB8DE;
+        border-top: 0px;
+        border-radius: 0px;
+        font-weight: bold;
+        outline: 0;
+        padding-left: 0px;
+        margin-bottom: 20px;
+        color: #ECF0F5;
+    }
+
+    .form-group {
+        margin-bottom: 40px;
+        outline: 0px;
+    }
+
+    .form-control:focus {
+        border-color: #242d38;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-bottom: 2px solid #0DB8DE;
+        outline: 0;
+        background-color: white;
+    }
+
+    input:focus {
+        outline: none;
+        box-shadow: 0 0 0;
+    }
+
+    label {
+        margin-bottom: 0px;
+        color: #ECF0F5;
+    }
+
+    .form-control-label {
+        font-size: 10px;
+        color: #d3e6f0;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .btn-outline-primary {
+        border-color: #d3e6f0;
+        color: #d3e6f0;
+        border-radius: 0px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #d3e6f0;
+            right: 0px;
+        }
+
+    .login-btm {
+        float: left;
+    }
+
+    .login-button {
+        padding-right: 0px;
+        text-align: right;
+        margin-bottom: 25px;
+    }
+
+    .login-text {
+        text-align: left;
+        padding-left: 0px;
+        color: #242d38;
+    }
+
+    .loginbttm {
+        padding: 0px;
+    }
+    .control-label col-md-2 {
+        color: #ECF0F5;
+    }
+    .container {
+        border-color: #242d38;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+                <div class="col-lg-12 login-key">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-12 login-title">
+                    Đăng Nhập
+                </div>
+
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.tendangnhap, "Tài Khoản", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.tendangnhap, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.tendangnhap, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.matkhau, "Mật Khẩu", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.matkhau, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.matkhau, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 loginbttm">
+                                <div class="col-lg-6 login-btm login-text">
+                                    <!-- Error Message -->
+                                </div>
+                                <div class="col-lg-6 login-btm login-button">
+                                    <input type="submit" value="Đăng nhập" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2">
+
+                </div>
+                <p color:"#ECF0F5"class="message">Nếu bạn chưa có tài khoản thì <a href="/NguoiDung/DangKy">Bạn hãy đăng ký tài khoản</a></p>
+            </div>
+        </div>
+    </div>
+
+    
+}

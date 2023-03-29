@@ -1,0 +1,246 @@
+﻿@model websiteSach.Models.SanPham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/TrangChu/head.cshtml";
+}
+<style>
+    .footer-item-link {
+        text-decoration: none;
+        font-size: 1.2rem;
+        color: #737373;
+        padding: 2px 0;
+        display: flex;
+        align-items: center;
+    }
+
+        .footer-item-link:hover {
+            color: var(--primary-color);
+        }
+
+    .footer-item__icon {
+        font-size: 1.6rem;
+        margin: -1px 8px 0 0;
+    }
+
+
+    ins {
+        text-decoration: none;
+    }
+
+    .product-summary .woocommerce-Price-currencySymbol {
+        font-size: .75em;
+        vertical-align: top;
+        margin-top: 0.05em;
+    }
+
+
+
+    .buy_continute {
+        text-decoration: none;
+        padding: 5px 10px;
+        background-color: #98FB98;
+        color: grey;
+        border-radius: 5px
+    }
+
+
+
+
+
+    .product__cart-buy {
+        padding: 20px;
+        background-color: #98fb98;
+        color: #fff;
+        border-radius: 60px;
+        text-decoration: none;
+        margin-top: 8px;
+    }
+
+    .a {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        color: black;
+        margin: 0 15px;
+        display: inline-block;
+        text-align: center;
+        font-size: 20px;
+        transition: 0.4s;
+        margin-left: 10px;
+    }
+
+    .DatMuabtn {
+        color: black;
+    }
+
+    .info {
+        color: #180000;
+        font-size: 20px;
+    }
+</style>
+<div class="header">
+
+    <div class="navbar">
+        <div class="navbar__left">
+
+
+
+            <div style="justify-content: space-between;" class="navbar__menu">
+                <i id="bars" class="fa fa-bars" aria-hidden="true"></i>
+                <ul>
+                    <li>@Html.ActionLink("Trang chủ", "Index1", "TrangChu")</li>
+                    <li>@Html.ActionLink("Thông tin sản phẩm", "Index1", "SanPham")</li>
+                    <li>@Html.ActionLink("Đăng Ký", "DangKy", "NguoiDung")</li>
+                    <li>@Html.ActionLink("Đăng Nhập", "DangNhap", "NguoiDung")</li>
+
+                    <li>@Html.Action("GioHangPartial", "GioHang", new { @class = "giohang" }) <i class="fa-solid fa-cart-plus " style="color:indianred"></i></li>
+                    <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+
+                </ul>
+
+
+
+            </div>
+
+        </div>
+
+        <div class="navbar__center">
+            <form action="" method="GET" class="navbar__search">
+                <input type="text" value="" placeholder="Tìm sản phẩm" name="txtsearch" class="search" required>
+                <i class="fa fa-search" id="searchBtn"></i>
+            </form>
+        </div>
+    </div>
+</div>
+<body>
+    <div class="body">
+        <a class="buy_continute" href="/TrangChu/Index1"><i class="fa fa-arrow-circle-left"></i> Trở Lại Trang Chủ</a>
+        <div class="product__details">
+            <div class="product__details-img">
+                <img width="200" src="@Model.hinh" alt="hinh thumbnail" />
+
+            </div>
+            <div class="product__details-info">
+                <h3>
+                    @Html.DisplayFor(model => model.tensp)
+                </h3>
+
+                <h3 style="color:black">
+
+                    <p class="info">Mô tả sản phẩm: @Html.DisplayFor(model => model.mota)
+                </h3>
+                <div class="product__pride">
+                    <div class="product__pride-newPride">
+                        <span class="Price">
+                            <bdi>
+                                @Model.giaban&nbsp;
+                                <span class="currencySymbol">₫</span>
+                            </bdi>
+                        </span>
+                    </div>
+
+                </div>
+
+                <span style="color: deepskyblue; font-size: 90%;"><strong>Hỗ trợ mua hàng:</strong></span>
+
+                <div>
+                    <p>Bảo hành đổi trả trong vòng <strong><span style="color: deepskyblue;">7 ngày</span></strong> </p>
+                    <p>Sau thời gian hết hạn bảo hành, nếu quý khách có bất kỳ yêu cầu hay thắc mắc thì vui lòng liên hệ với vào trang chủ của chúng tôi để được hướng dẫn và giải quyết các vấn đề gặp phải.<span style="color: #00aae7;"><strong><a style="color: #00aae7;"></a></strong></span></p>
+                    <p>Giao hàng tận nơi, miễn phí khi mua trên 3 sản phẩm<span style="color: #00aae7;"><strong><a style="color: #00aae7;"></a></strong></span></p>
+
+                </div>
+                <div class="icons_socials">
+
+                    <a class="a" style="background-color: blue" href="https://www.facebook.com/baoan.nguyenhoang.52438174">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+
+
+                    <a class="a" style="background-color:indianred" href="https://www.instagram.com/baoan1307_/">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+
+
+                    <a class="a" style="background-color:green" href="tel:0923003919">
+                        <i class="fas fa-phone-alt"></i>
+
+                    </a>
+
+
+                </div>
+
+
+
+
+                <button type="submit" class="product__cart-buy" name="buy-now">
+                    <a style="text-decoration:none" class="DatMuabtn" href="@Url.Action("ThemGioHang", "GioHang",
+                   new { @id = Model.masp, @strURL = Request.Url.ToString() })">ĐẶT MUA</a>
+                </button>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+
+<footer>
+
+
+    <div class="footer__info">
+
+        <div class="footer__info-content">
+            <h3>Trung tâm trợ giúp</h3>
+            <p>Cửa hàng nội thất Hutech</p>
+            <p>Hướng dẫn mua hàng</p>
+        </div>
+
+
+
+        <div class="footer__info-content">
+            <h3>Theo dõi</h3>
+            <div>
+                <a href="https://www.facebook.com/profile.php?id=100045049748615" class="footer-item-link">
+                    <i class="footer-item__icon fab fa-facebook " style="color:cornflowerblue"></i>
+                    Facebook
+                </a>
+            </div>
+
+            <div>
+                <a href="https://www.facebook.com/profile.php?id=100045049748615" class="footer-item-link">
+                    <i class="footer-item__icon fab fa-instagram-square" style="color:deeppink"></i>
+                    Instagram
+                </a>
+            </div>
+
+
+            <div>
+                <a href="tel:0375846561" class="footer-item-link">
+                    <i class="footer-item__icon fa-solid fa-phone" style="color:darkseagreen"></i>
+                    0923003919
+            </div>
+
+
+
+        </div>
+
+        <div class="footer__info-content">
+            <h3>Chăm sóc khách hàng</h3>
+            <p>Hỗ trợ đổi sản phẩm</p>
+            <p>Phản hồi</p>
+        </div>
+
+    </div>
+
+
+</footer>
