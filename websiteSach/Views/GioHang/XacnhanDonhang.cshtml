@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "XacnhanDonhang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="text-align:center;">
+    <h1>Thank you!</h1>
+    <h3>Chúng tôi sẽ giao hàng nhanh nhất có thể cho bạn</h3>
+    <li class="lino">Bạn sẽ chuyển sang trang chủ sau <span id="time">10</span> giây nữa<br /> <a href="/" onclick="reload();" id="reloadlink" title=""><a> </li>
+    <script type="text/javascript">var jgt = 10; document.getElementById('time').innerHTML = jgt; function stime() { document.getElementById('time').innerHTML = jgt; jgt = jgt - 1; if (jgt == 0) { clearInterval(timing); location = '/TrangChu/Index1'; } } var timing = setInterval("stime();", 1000);</script>
+
+</div>
+
+
+

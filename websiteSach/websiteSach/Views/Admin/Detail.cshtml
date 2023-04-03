@@ -1,0 +1,149 @@
+﻿@model websiteSach.Models.SanPham
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Chi tiết sản phẩm</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label>Mã Loại:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maloaisp)
+        </dd>
+
+        <dt>
+            <label>Tên sản phẩm:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tensp)
+        </dd>
+
+        <dt>
+            <label>Mô tả:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mota)
+        </dd>
+
+        <dt>
+            <label>Hình:</label>
+        </dt>
+
+        <dd>
+            <img width="200" src="@Model.hinh" alt="hinh thumbnail" />
+        </dd>
+
+        <dt>
+            <label>Giá bán:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.giaban)
+        </dd>
+
+        <dt>
+            <label>Ngày cập nhật:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaycapnhat)
+        </dd>
+
+        <dt>
+            <label>Số lượng tồn:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soluongton)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.masp }) |
+    @Html.ActionLink("Quay lại", "Listsp", "Admin")
+</p>
+<div class="go-to-top"><i class="fas fa-chevron-up"></i></div>
+<footer>
+
+
+    <div class="footer__info">
+
+        <div class="footer__info-content">
+            <h3>Trung tâm trợ giúp</h3>
+            <p>Cửa hàng thời trang Velence</p>
+            <p>Hướng dẫn mua hàng</p>
+        </div>
+
+
+
+        <div class="footer__info-content">
+            <h3>Theo dõi</h3>
+            <div>
+                <a href="https://www.facebook.com/profile.php?id=100045049748615" class="footer-item-link">
+                    <i class="footer-item__icon fab fa-facebook" style="color:cornflowerblue"></i>
+                    Facebook
+                </a>
+            </div>
+
+            <div>
+                <a href="https://www.facebook.com/profile.php?id=100045049748615" class="footer-item-link">
+                    <i class="footer-item__icon fab fa-instagram-square" style="color:deeppink"></i>
+                    Instagram
+                </a>
+            </div>
+
+
+            <div>
+                <a href="tel:0375846561" class="footer-item-link">
+                    <i class="footer-item__icon fa-solid fa-phone" style="color:darkseagreen"></i>
+                    0375846561
+                </a>
+            </div>
+
+
+
+        </div>
+
+        <div class="footer__info-content">
+            <h3>Chăm sóc khách hàng</h3>
+            <p>Hỗ trợ đổi sản phẩm</p>
+            <p>Phản hồi</p>
+        </div>
+
+
+
+    </div>
+
+
+</footer>
+<script src="~/Content/jquerymin.js"></script>
+<script src="~/Content/slickmin.js"></script>
+<script>
+    //Slider using Slick
+    $(document).ready(function () {
+        $('.post-wrapper').slick({
+            slidesToScroll: 1,
+            autoplay: true,
+            arrow: true,
+            dots: true,
+            autoplaySpeed: 5000,
+            prevArrow: $('.prev'),
+            nextArrow: $('.next'),
+            appendDots: $(".dot"),
+        });
+    });
+</script>
+
+<script src="~/Content/script.js"></script>

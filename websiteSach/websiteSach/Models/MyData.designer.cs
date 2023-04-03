@@ -48,7 +48,7 @@ namespace websiteSach.Models
     #endregion
 		
 		public MyDataDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DbVelenceConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DbVelenceConnectionString2"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1076,7 +1076,7 @@ namespace websiteSach.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mota", DbType="NVarChar(255)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mota", DbType="NVarChar(2000)")]
 		public string mota
 		{
 			get

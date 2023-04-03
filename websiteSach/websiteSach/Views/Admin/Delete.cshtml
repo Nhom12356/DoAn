@@ -1,0 +1,78 @@
+﻿@model websiteSach.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4>Xóa sản phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+               <label>Mã Loại:</label>       
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maloaisp)
+        </dd>
+
+        <dt>
+          <label>Tên sản phẩm:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tensp)
+        </dd>
+
+        <dt>
+            <label>Mô tả:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mota)
+        </dd>
+
+        <dt>
+            <label>Hình:</label>
+        </dt>
+
+        <dd>
+            <img width="200" src="@Model.hinh" alt="hinh thumbnail" />
+        </dd>
+
+        <dt>
+            <label>Giá bán:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.giaban)
+        </dd>
+
+        <dt>
+            <label>Ngày cập nhật:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaycapnhat)
+        </dd>
+
+        <dt>
+          <label>Số lượng tồn:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soluongton)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại", "Listsp")
+        </div>
+    }
+</div>

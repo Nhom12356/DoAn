@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/TrangChu/head.cshtml";
+}
+
+<link href="~/Content/bootstrap.rtl.min.css" rel="stylesheet" />
+
+<script src="~/Scripts/bootstrap.bundle.min.js"></script>
+<div class="header">
+
+    <div class="navbar">
+        <div class="navbar__left">
+
+
+
+            <div style="justify-content: space-between;" class="navbar__menu">
+                <i id="bars" class="fa fa-bars" aria-hidden="true"></i>
+                <ul>
+                    <li>@Html.ActionLink("Trang chủ", "Index1", "TrangChu")</li>
+                    <li>@Html.ActionLink("Quản Lý Sản Phẩm", "Listsp", "Admin")</li>
+                    <li>@Html.ActionLink("Quản Lý Loại Sản Phẩm", "Listloaihanghoa", "Admin")</li>
+                    <li>@Html.ActionLink("Quản Lý Đơn Hàng", "ListDonHang", "Admin")</li>
+                    <li>@Html.ActionLink("Quản Lý Chi tiết đơn hàng", "Listchitiet", "Admin")</li>
+                </ul>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<style>
+    .post-slider img {
+        padding: 1px;
+        margin: 1px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .post-wrapper {
+        height: 100%;
+    }
+</style>
+<div class="post-slider">
+    <i class="fa fa-chevron-left prev" aria-hidden="true"></i>
+    <i class="fa fa-chevron-right next" aria-hidden="true"></i>
+
+    <div class="post-wrapper">
+        <div class="post">
+            <img src="~/Content/images/banner1.jpg">
+        </div>
+        <div class="post">
+            <img src="~/Content/images/banner2.jpg">
+        </div>
+        <div class="post">
+            <img src="~/Content/images/banner3.jpg">
+        </div>
+        <div class="post">
+            <img src="~/Content/images/banner4.jpg">
+        </div>
+        <div class="post">
+            <img src="~/Content/images/banner5.jpg">
+        </div>
+    </div>
+</div>
+<div class="go-to-top"><i class="fas fa-chevron-up"></i></div>
+<footer>
+
+
+    <div class="footer__info">
+
+        <div class="footer__info-content">
+            <h3>Trung tâm trợ giúp</h3>
+            <p>Cửa hàng thời trang Velence</p>
+            <p>Hướng dẫn mua hàng</p>
+        </div>
+
+
+
+        <div class="footer__info-content">
+            <h3>Theo dõi</h3>
+            <div>
+                <a href="https://www.facebook.com/profile.php?id=100045049748615" class="footer-item-link">
+                    <i class="footer-item__icon fab fa-facebook" style="color:cornflowerblue"></i>
+                    Facebook
+                </a>
+            </div>
+
+            <div>
+                <a href="https://www.facebook.com/profile.php?id=100045049748615" class="footer-item-link">
+                    <i class="footer-item__icon fab fa-instagram-square" style="color:deeppink"></i>
+                    Instagram
+                </a>
+            </div>
+
+
+            <div>
+                <a href="tel:0375846561" class="footer-item-link">
+                    <i class="footer-item__icon fa-solid fa-phone" style="color:darkseagreen"></i>
+                    0375846561
+                </a>
+            </div>
+
+
+
+        </div>
+
+        <div class="footer__info-content">
+            <h3>Chăm sóc khách hàng</h3>
+            <p>Hỗ trợ đổi sản phẩm</p>
+            <p>Phản hồi</p>
+        </div>
+
+
+
+    </div>
+
+
+</footer>
+<script src="~/Content/jquerymin.js"></script>
+<script src="~/Content/slickmin.js"></script>
+<script>
+    //Slider using Slick
+    $(document).ready(function () {
+        $('.post-wrapper').slick({
+            slidesToScroll: 1,
+            autoplay: true,
+            arrow: true,
+            dots: true,
+            autoplaySpeed: 5000,
+            prevArrow: $('.prev'),
+            nextArrow: $('.next'),
+            appendDots: $(".dot"),
+        });
+    });
+</script>
+
+<script src="~/Content/script.js"></script>
+
+
+
+
+
+
+
+
+

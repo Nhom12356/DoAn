@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DbVelence" Class="MyDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-H1795DM\SQLEXPRESS;Initial Catalog=DbVelence;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DbVelenceConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-H1795DM;Initial Catalog=DbVelence;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DbVelenceConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChiTietDonHang" Member="ChiTietDonHangs">
     <Type Name="ChiTietDonHang">
       <Column Name="madon" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -47,7 +47,7 @@
       <Column Name="masp" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="maloaisp" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="tensp" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="mota" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="mota" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
       <Column Name="hinh" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="giaban" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="ngaycapnhat" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />

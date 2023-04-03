@@ -1,0 +1,324 @@
+﻿@model IEnumerable<websiteSach.Models.DonHang>
+@{
+    ViewBag.Title = "ListDonHang";
+    Layout = "~/Views/TrangChu/head.cshtml";
+}
+
+<style>
+
+
+    .rtable {
+        display: inline-block;
+        vertical-align: top;
+        max-width: 100%;
+        overflow-x: auto;
+        // optional - looks better for small cell values white-space: nowrap;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .rtable,
+    .rtable--flip tbody {
+        // optional - enable iOS momentum scrolling -webkit-overflow-scrolling: touch;
+        // scrolling shadows background: radial-gradient(left, ellipse, rgba(0,0,0, .2) 0%, rgba(0,0,0, 0) 75%) 0 center, radial-gradient(right, ellipse, rgba(0,0,0, .2) 0%, rgba(0,0,0, 0) 75%) 100% center;
+        background-size: 10px 100%, 10px 100%;
+        background-attachment: scroll, scroll;
+        background-repeat: no-repeat;
+    }
+
+
+        .rtable td:first-child,
+        .rtable--flip tbody tr:first-child {
+            background-image: linear-gradient(to right, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0) 100%);
+            background-repeat: no-repeat;
+            background-size: 20px 100%;
+        }
+
+        // gradient on the last cells to hide the right shadow
+        .rtable td:last-child,
+        .rtable--flip tbody tr:last-child {
+            background-image: linear-gradient(to left, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0) 100%);
+            background-repeat: no-repeat;
+            background-position: 100% 0;
+            background-size: 20px 100%;
+        }
+
+        .rtable th {
+            font-size: 11px;
+            text-align: left;
+            text-transform: uppercase;
+            background: #f2f0e6;
+        }
+
+        .rtable th,
+        .rtable td {
+            padding: 6px 12px;
+            border: 1px solid #d9d7ce;
+        }
+
+    .rtable--flip {
+        display: flex;
+        overflow: hidden;
+        background: none;
+    }
+
+        .rtable--flip thead {
+            display: flex;
+            flex-shrink: 0;
+            min-width: min-content;
+        }
+
+        .rtable--flip tbody {
+            display: flex;
+            position: relative;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        .rtable--flip tr {
+            display: flex;
+            flex-direction: column;
+            min-width: min-content;
+            flex-shrink: 0;
+        }
+
+        .rtable--flip td,
+        .rtable--flip th {
+            display: block;
+        }
+
+        .rtable--flip td {
+            background-image: none !important;
+            // border-collapse is no longer active border-left: 0;
+        }
+
+            // border-collapse is no longer active
+            .rtable--flip th:not(:last-child),
+            .rtable--flip td:not(:last-child) {
+                border-bottom: 0;
+            }
+
+
+
+    body {
+        margin: 0;
+        padding: 25px;
+        color: #494b4d;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    h1, h2, h3 {
+        margin: 0 0 10px 0;
+        color: #1d97bf;
+    }
+
+    h1 {
+        font-size: 25px;
+        line-height: 30px;
+    }
+
+    h2 {
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    h3 {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    table {
+        margin-bottom: 30px;
+    }
+
+    a {
+        color: dodgerblue;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    code {
+        background: #fffbcc;
+        font-size: 12px;
+    }
+</style>
+<div class="header">
+
+    <div class="navbar">
+        <div class="navbar__left">
+
+
+
+            <div style="justify-content: space-between;" class="navbar__menu">
+                <i id="bars" class="fa fa-bars" aria-hidden="true"></i>
+                <ul>
+                    <li>@Html.ActionLink("Trang chủ", "Index1", "TrangChu")</li>
+                    <li>@Html.ActionLink("Quản Lý Sản Phẩm", "Listsp", "Admin")</li>
+                    <li>@Html.ActionLink("Quản Lý Loại Sản Phẩm", "Listloaihanghoa", "Admin")</li>
+                    <li>@Html.ActionLink("Quản Lý Đơn Hàng", "ListDonHang", "Admin")</li>
+                    <li>@Html.ActionLink("Quản Lý Chi tiết đơn hàng", "Listchitiet", "Admin")</li>
+
+
+                </ul>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .post-slider img {
+        padding: 1px;
+        margin: 1px;
+        width: 100%;
+        height: 400px;
+    }
+
+    .post-wrapper {
+        height: 400px;
+    }
+</style>
+<div class="post-slider">
+    <i class="fa fa-chevron-left prev" aria-hidden="true"></i>
+    <i class="fa fa-chevron-right next" aria-hidden="true"></i>
+
+    <div class="post-wrapper">
+        <div class="post">
+            <img src="~/Content/images/banner1.jpg">
+        </div>
+        <div class="post">
+            <img src="~/Content/images/banner2.jpg">
+        </div>
+        <div class="post">
+            <img src="~/Content/images/banner3.jpg">
+        </div>
+        <div class="post">
+            <img src="~/Content/images/banner4.jpg">
+        </div>
+        <div class="post">
+            <img src="~/Content/images/banner5.jpg">
+        </div>
+    </div>
+</div>
+
+
+
+<h1 style="color:black">Quản Lý Đơn Hàng</h1>
+<table class="rtable">
+    <thead>
+        <tr>
+            <th> Mã Đơn </th>
+            <th> Thanh Toán</th>
+            <th> Giao Hàng </th>
+            <th> Ngày Đặt</th>
+            <th> Ngày Giao </th>
+            <th> Mã Khách Hàng</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.madon)</td>
+            <td>@Html.DisplayFor(modelItem => item.thanhtoan)</td>
+            <td>@Html.DisplayFor(modelItem => item.giaohang)</td>
+            <td>@Html.DisplayFor(modelItem => item.ngaydat)</td>
+            <td>@Html.DisplayFor(modelItem => item.ngaygiao)</td>
+            <td>@Html.DisplayFor(modelItem => item.makh)</td>
+
+        </tr>
+
+    }
+</table>
+<div>
+    @Html.ActionLink("Quay lại", "Index", "Admin")
+</div>
+
+<script>
+
+    if (/(iPhone|iPad|iPod)/gi.test(navigator.userAgent) && window.location.pathname.indexOf('/full') > -1) {
+        var p = document.createElement('p');
+        p.innerHTML = '<a target="_blank" href="https://s.codepen.io/dbushell/debug/wGaamR"><b>Click here to view this demo properly on iOS devices (remove the top frame)</b></a>';
+        document.body.insertBefore(p, document.body.querySelector('h1'));
+    }
+</script>
+
+<div class="go-to-top"><i class="fas fa-chevron-up"></i></div>
+<footer>
+
+
+    <div class="footer__info">
+
+        <div class="footer__info-content">
+            <h3>Trung tâm trợ giúp</h3>
+            <p>Cửa hàng thời trang Velence</p>
+            <p>Hướng dẫn mua hàng</p>
+        </div>
+
+
+
+        <div class="footer__info-content">
+            <h3>Theo dõi</h3>
+            <div>
+                <a href="https://www.facebook.com/profile.php?id=100045049748615" class="footer-item-link">
+                    <i class="footer-item__icon fab fa-facebook" style="color:cornflowerblue"></i>
+                    Facebook
+                </a>
+            </div>
+
+            <div>
+                <a href="https://www.facebook.com/profile.php?id=100045049748615" class="footer-item-link">
+                    <i class="footer-item__icon fab fa-instagram-square" style="color:deeppink"></i>
+                    Instagram
+                </a>
+            </div>
+
+
+            <div>
+                <a href="tel:0375846561" class="footer-item-link">
+                    <i class="footer-item__icon fa-solid fa-phone" style="color:darkseagreen"></i>
+                    0375846561
+                </a>
+            </div>
+
+
+
+        </div>
+
+        <div class="footer__info-content">
+            <h3>Chăm sóc khách hàng</h3>
+            <p>Hỗ trợ đổi sản phẩm</p>
+            <p>Phản hồi</p>
+        </div>
+
+
+
+    </div>
+
+
+</footer>
+<script src="~/Content/jquerymin.js"></script>
+<script src="~/Content/slickmin.js"></script>
+<script>
+    //Slider using Slick
+    $(document).ready(function () {
+        $('.post-wrapper').slick({
+            slidesToScroll: 1,
+            autoplay: true,
+            arrow: true,
+            dots: true,
+            autoplaySpeed: 5000,
+            prevArrow: $('.prev'),
+            nextArrow: $('.next'),
+            appendDots: $(".dot"),
+        });
+    });
+</script>
+
+<script src="~/Content/script.js"></script>
+

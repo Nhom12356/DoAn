@@ -1,0 +1,227 @@
+﻿@model IEnumerable<websiteSach.Models.SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/TrangChu/head.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Content/bootstrap.rtl.min.css" rel="stylesheet" />
+<link href="~/Public/css/LayoutAdmin.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.bundle.min.js"></script>
+
+
+<div class="header">
+
+    <div class="navbar">
+        <div class="navbar__left">
+
+
+
+            <div style="justify-content: space-between;" class="navbar__menu">
+                <i id="bars" class="fa fa-bars" aria-hidden="true"></i>
+
+                <ul>
+                    <li>@Html.ActionLink("Trang chủ", "Index1", "TrangChu")</li>
+                    <li>@Html.ActionLink("Thông tin sản phẩm", "Index", "SanPham")</li>
+
+                    <li>@Html.ActionLink("Đăng Nhập", "DangNhap", "NguoiDung")</li>
+                    <li>@Html.ActionLink("Đăng Xuất", "LogOut", "NguoiDung")</li>
+
+                    <li>@Html.Action("GioHangPartial", "GioHang", new { @class = "giohang" }) <i class="fa-solid fa-cart-plus" style="color:indianred"></i></li>
+
+
+                    <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+
+                </ul>
+
+
+
+            </div>
+
+        </div>
+
+        <div class="navbar__center">
+            @using (Html.BeginForm("KQTimKiem", "TimKiem", FormMethod.Get, new { @class = "navbar__search" }))
+            {
+                @Html.TextBox("search", null, new { @class = "search", placeholder = "Nhập để tìm kiếm" })
+                <i class="fa fa-search" id="searchBtn"></i>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .post-slider img {
+        padding: 1px;
+        margin: 1px;
+        width: 100%;
+        height: 400px;
+    }
+
+    .post-wrapper {
+        height: 400px;
+    }
+</style>
+<div class="post-slider">
+    <i class="fa fa-chevron-left prev" aria-hidden="true"></i>
+    <i class="fa fa-chevron-right next" aria-hidden="true"></i>
+
+    <div class="post-wrapper">
+        <div class="post">
+            <img src="~/Content/images/banner1.jpg">
+        </div>
+        <div class="post">
+            <img src="~/Content/images/banner2.jpg">
+        </div>
+        <div class="post">
+            <img src="~/Content/images/banner3.jpg">
+        </div>
+        <div class="post">
+            <img src="~/Content/images/banner4.jpg">
+        </div>
+        <div class="post">
+            <img src="~/Content/images/banner5.jpg">
+        </div>
+    </div>
+</div>
+<div class="go-to-top"><i class="fas fa-chevron-up"></i></div>
+
+
+
+
+<!-- all san pham -->
+
+<div class="body">
+
+
+    <div class="body__mainTitle">
+        <h2 style="color:black">TẤT CẢ SẢN PHẨM</h2>
+    </div>
+
+    <div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-lg-2_5 col-md-4 col-6">
+                    <a class="product" href="@Url.Action("Detail", "SanPham", new {id =item.masp})">
+                        <div class="product__img">
+                            <img height="200" src="@item.hinh">
+                        </div>
+
+                        <div class="product__content">
+                            <div class="product__title">
+                                @item.tensp
+                            </div>
+
+                            <div class="product__pride">
+                                <div class="product__pride-newPride">
+                                    <span class="Price">
+                                        <bdi>
+                                            @item.giaban&nbsp;
+                                            <span class="currencySymbol">₫</span>
+                                        </bdi>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+
+            }
+
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+    </body>
+
+
+
+<footer>
+
+
+    <div class="footer__info">
+
+        <div class="footer__info-content">
+            <h3>Trung tâm trợ giúp</h3>
+            <p>Cửa hàng thời trang Velence</p>
+            <p>Hướng dẫn mua hàng</p>
+        </div>
+
+
+
+        <div class="footer__info-content">
+            <h3>Theo dõi</h3>
+            <div>
+                <a href="https://www.facebook.com/profile.php?id=100045049748615" class="footer-item-link">
+                    <i class="footer-item__icon fab fa-facebook" style="color:cornflowerblue"></i>
+                    Facebook
+                </a>
+            </div>
+
+            <div>
+                <a href="https://www.facebook.com/profile.php?id=100045049748615" class="footer-item-link">
+                    <i class="footer-item__icon fab fa-instagram-square" style="color:deeppink"></i>
+                    Instagram
+                </a>
+            </div>
+
+
+            <div>
+                <a href="tel:0923003919" class="footer-item-link">
+                    <i class="footer-item__icon fa-solid fa-phone" style="color:darkseagreen"></i>
+                    0375846561
+                </a>
+            </div>
+
+
+
+        </div>
+
+        <div class="footer__info-content">
+            <h3>Chăm sóc khách hàng</h3>
+            <p>Hỗ trợ đổi sản phẩm</p>
+            <p>Phản hồi</p>
+        </div>
+
+
+
+    </div>
+
+
+</footer>
+<script src="~/Content/jquerymin.js"></script>
+<script src="~/Content/slickmin.js"></script>
+<script>
+    //Slider using Slick
+    $(document).ready(function () {
+        $('.post-wrapper').slick({
+            slidesToScroll: 1,
+            autoplay: true,
+            arrow: true,
+            dots: true,
+            autoplaySpeed: 5000,
+            prevArrow: $('.prev'),
+            nextArrow: $('.next'),
+            appendDots: $(".dot"),
+        });
+    });
+</script>
+
+<script src="~/Content/script.js"></script>
+
+
+
+
+
+
